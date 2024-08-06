@@ -2,11 +2,25 @@
 <html lang="en">
 
 <head>
+<<<<<<< HEAD
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
     <!-- Link CSS -->
+  <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/variables.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
+=======
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Contact</title>
+
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+>>>>>>> f55059fcc95f6af160a2d0a5e030b973d24d6c22
+
+  <!-- Link CSS -->
   <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/variables.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
@@ -25,6 +39,10 @@
   <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
+<<<<<<< HEAD
+=======
+
+>>>>>>> f55059fcc95f6af160a2d0a5e030b973d24d6c22
 </head>
 
 <body>

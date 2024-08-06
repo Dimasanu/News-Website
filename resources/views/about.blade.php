@@ -10,6 +10,11 @@
   <link rel="stylesheet" href="{{ asset('assets/css/variables.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
 
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/variables.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
+
   <!-- Favicons -->
   <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
   <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">

@@ -6,6 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
   
+<<<<<<< HEAD
+=======
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/variables.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
+
+>>>>>>> f55059fcc95f6af160a2d0a5e030b973d24d6c22
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -455,6 +466,7 @@
     </section><!-- End Business Category Section -->
 
     <!-- ======= Lifestyle Category Section ======= -->
+<<<<<<< HEAD
     <section class="category-section">
       <div class="container" data-aos="fade-up">
   
@@ -552,6 +564,8 @@
   </section><!-- End Business Category Section -->
   
   <!-- ======= Lifestyle Category Section ======= -->
+=======
+>>>>>>> f55059fcc95f6af160a2d0a5e030b973d24d6c22
   <section class="category-section">
       <div class="container" data-aos="fade-up">
   
