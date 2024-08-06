@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<x-head>Home</x-head>
+<x-head>{{ $title }}</x-head>
 
 <body>
 

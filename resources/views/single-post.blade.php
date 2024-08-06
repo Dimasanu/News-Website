@@ -1,4 +1,5 @@
 <x-layout>
+  <x-slot:title>{{ $title }}</x-slot:title>
   <!-- ======= Single Post ======= -->
     <section class="/single-post-content">
       <div class="container">

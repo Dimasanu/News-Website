@@ -1,4 +1,5 @@
 <x-layout>
+  <x-slot:title>{{ $title }}</x-slot:title>
     <section>
         <div class="container" data-aos="fade-up">
             <div class="row">

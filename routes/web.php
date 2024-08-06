@@ -14,26 +14,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('index', ['title' => 'Home']);
 });
 
 Route::get('/about', function () {
-    return view('about');
+    return view('about', ['title' => 'About']);
 });
 
 Route::get('/contact', function () {
-    return view('contact');
+    return view('contact', ['title' => 'contact']);
 });
 
 Route::get('/category', function () {
-    return view('category');
+    return view('category', ['title' => 'Category']);
 });
 
 Route::get('/search-result', function () {
-    return view('search-result');
+    return view('search-result', ['title' => 'search-result']);
 });
 
 Route::get('/single-post', function () {
-    return view('single-post');
+    return view('single-post', ['title' => 'single-post']);
 });
 

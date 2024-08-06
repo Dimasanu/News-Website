@@ -1,4 +1,5 @@
 <x-layout>
+  <x-slot:title>{{ $title }}</x-slot:title>
     <!-- ======= Search Results ======= -->
     <section id="search-result" class="search-result">
       <div class="container">
