@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<x-head>Artikel</x-head>
-
-<body>
-
-  <!-- ======= Header ======= -->
-  <x-header></x-header>
-  <!-- End Header -->
-
-  <main id="main">
-
+<x-layout>
     <section class="/single-post-content">
       <div class="container">
         <div class="row">
@@ -322,23 +310,4 @@
         </div>
       </div>
     </section>
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <x-footer></x-footer>
-
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Scripts -->
-  <!-- Vendor JS Files -->
-  <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-  <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-  <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
-  <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
-
-  <!-- Template Main JS File -->
-  <script src="{{ asset('assets/js/main.js') }}"></script>
-</body>
-
-</html>
+</x-layout>
