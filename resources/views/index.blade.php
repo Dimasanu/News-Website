@@ -154,11 +154,11 @@
                             </div>
                         </div>
 
-                        <!-- Trending Section -->
+                        <!-- Latest Section -->
                         <div class="col-lg-4">
-                            <div class="trending">
-                                <h3>Trending</h3>
-                                <ul class="trending-post">
+                            <div class="latest">
+                                <h3>Latest</h3>
+                                <ul class="latest-post">
                                     <li>
                                         <a href="/single-post">
                                             <span class="number">1</span>
@@ -197,7 +197,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div> <!-- End Trending Section -->
+                        </div> <!-- End Latest Section -->
                     </div>
                 </div>
             </div> <!-- End .row -->
