@@ -10,6 +10,7 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="/">Blog</a></li>
+          <li><a href="/login">Login</a></li>
           <li class="dropdown"><a href="/category"><span>Categories</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a href="/search-result">Search Result</a></li>

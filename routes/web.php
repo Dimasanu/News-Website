@@ -37,3 +37,15 @@ Route::get('/single-post', function () {
     return view('single-post', ['title' => 'single-post']);
 });
 
+Route::get('/login', function () {
+    return view('login', ['title' => 'login']);
+});
+
+Route::get('/register', function () {
+    return view('register', ['title' => 'register']);
+});
+
+Route::get('/password', function () {
+    return view('password', ['title' => 'password']);
+});
+
