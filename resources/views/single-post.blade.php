@@ -1,4 +1,5 @@
 <x-layout>
+  <!-- ======= Single Post ======= -->
     <section class="/single-post-content">
       <div class="container">
         <div class="row">
@@ -310,4 +311,5 @@
         </div>
       </div>
     </section>
+  <!-- End Single Post -->
 </x-layout>

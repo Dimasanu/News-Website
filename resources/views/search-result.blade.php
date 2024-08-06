@@ -286,5 +286,6 @@
 
         </div>
       </div>
-    </section> <!-- End Search Result -->
+    </section> 
+    <!-- End Search Result -->
 </x-layout>
