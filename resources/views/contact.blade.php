@@ -15,7 +15,7 @@
                     <div class="info-item">
                         <i class="bi bi-geo-alt"></i>
                         <h3>Address</h3>
-                        <address>A108 Adam Street, NY 535022, USA</address>
+                        <address>Land Of Dawn Street, Blok G, MOLEN</address>
                     </div>
                 </div><!-- End Info Item -->
 
@@ -23,7 +23,7 @@
                     <div class="info-item info-item-borders">
                         <i class="bi bi-phone"></i>
                         <h3>Phone Number</h3>
-                        <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+                        <p><a href="tel:+62815002100031">+62 8150 0210 0031</a></p>
                     </div>
                 </div><!-- End Info Item -->
 

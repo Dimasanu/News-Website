@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\PasswordResetController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +27,7 @@ Route::get('/about', function () {
 });
 
 Route::get('/contact', function () {
-    return view('contact', ['title' => 'contact']);
+    return view('contact', ['title' => 'Contact']);
 });
 
 Route::get('/category', function () {
@@ -38,14 +43,26 @@ Route::get('/single-post', function () {
 });
 
 Route::get('/login', function () {
-    return view('login', ['title' => 'login']);
+    return view('/auth/login', ['title' => 'Login']);
 });
 
 Route::get('/register', function () {
-    return view('register', ['title' => 'register']);
+    return view('/auth/register', ['title' => 'Register']);
 });
 
 Route::get('/password', function () {
-    return view('password', ['title' => 'password']);
+    return view('/auth/password', ['title' => 'Reset Password']);
 });
 
+//login route
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// register route
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
+
+//reset password
+Route::get('/password-reset', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
+Route::post('/password-reset', [PasswordResetController::class, 'resetPassword'])->name('password.reset.post');

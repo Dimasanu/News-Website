@@ -21,5 +21,6 @@
   
     <!-- Template Main CSS Files -->
     <link href="assets/css/variables.css" rel="stylesheet">
+    <link href="assets/css/styles.css" rel="stylesheet" />
     <link href="assets/css/main.css" rel="stylesheet">
   </head>
