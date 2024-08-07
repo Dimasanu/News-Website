@@ -29,7 +29,7 @@ class RegisterController extends Controller
 
         auth()->login($user);
 
-        return redirect()->route('dashboard')->with('success', 'Account created successfully.');
+        return redirect()->route('home')->with('success', 'Account created successfully.');
     }
 
     /**
@@ -42,7 +42,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);

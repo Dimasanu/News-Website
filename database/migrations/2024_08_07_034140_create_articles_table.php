@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArticleTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -22,8 +22,6 @@ class CreateArticleTable extends Migration
             $table->string('gambar');
             $table->softDeletes();
             $table->timestamps();
-
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
@@ -36,4 +34,4 @@ class CreateArticleTable extends Migration
     {
         Schema::dropIfExists('articles');
     }
-}
+};

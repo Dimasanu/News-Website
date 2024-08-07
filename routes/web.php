@@ -20,7 +20,7 @@ use App\Http\Controllers\Auth\PasswordResetController;
 
 Route::get('/', function () {
     return view('index', ['title' => 'Home']);
-});
+})->name('home');
 
 Route::get('/about', function () {
     return view('about', ['title' => 'About']);
