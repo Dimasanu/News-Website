@@ -54,6 +54,10 @@ Route::get('/password', function () {
     return view('/auth/password', ['title' => 'Reset Password']);
 });
 
+Route::get('/account', function () {
+    return view('account', ['title' => 'account']);
+});
+
 //login route
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
