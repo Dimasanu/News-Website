@@ -4,13 +4,12 @@
       <a href="/" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1>ZenBlog</h1>
+        <h1>Newzzz</h1>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="/">Blog</a></li>
-          <li><a href="/login">Login</a></li>
           <li class="dropdown"><a href="/category"><span>Categories</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a href="/search-result">Search Result</a></li>
@@ -51,6 +50,9 @@
             <button class="btn js-search-close"><span class="bi-x"></span></button>
           </form>
         </div><!-- End Search Form -->
+
+        <!-- Login Button -->
+        <a href="/login" class="btn btn-primary mx-2">Login</a>
 
       </div>
 
