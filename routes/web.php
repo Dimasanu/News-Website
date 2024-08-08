@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\PasswordResetController;
-
+use App\Http\Controllers\ArticleController;
 
 
 
@@ -75,3 +75,4 @@ Route::post('/register', [RegisterController::class, 'register']);
 //reset password
 Route::get('/password-reset', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
 Route::post('/password-reset', [PasswordResetController::class, 'resetPassword'])->name('password.reset.post');
+
