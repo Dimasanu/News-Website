@@ -1,4 +1,5 @@
 <?php
+// app/Http/Controllers/Auth/LoginController.php
 
 namespace App\Http\Controllers\Auth;
 
@@ -30,6 +31,11 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials, $request->filled('remember'))) {
             $request->session()->regenerate();
+
+            if (Auth::user()->is_superadmin) {
+                return redirect()->route('dashboard')->with('success', 'Login successful.');
+            }
+
             return redirect()->intended(route('home'))->with('success', 'Login successful.');
         }
 

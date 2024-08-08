@@ -1,19 +1,24 @@
 <?php
 
+// app/View/Components/Footer.php
+
 namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use App\Models\Article;
+use App\Models\Category;
 
 class Footer extends Component
 {
-    /**
-     * Create a new component instance.
-     */
+    public $latestArticles;
+    public $categories;
+
     public function __construct()
     {
-        //
+        $this->latestArticles = Article::orderBy('created_at', 'desc')->take(5)->get();
+        $this->categories = Category::all();
     }
 
     /**
@@ -21,6 +26,10 @@ class Footer extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.footer');
+        return view('components.footer', [
+            'latestArticles' => $this->latestArticles,
+            'categories' => $this->categories,
+        ]);
     }
 }
+

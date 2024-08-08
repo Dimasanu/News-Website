@@ -24,4 +24,12 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+
+    // app/Http/Kernel.php
+
+    protected $routeMiddleware = [
+        // Middleware lainnya
+        'is_superadmin.redirect' => \App\Http\Middleware\RedirectIfSuperAdmin::class,
+    ];
+
 }

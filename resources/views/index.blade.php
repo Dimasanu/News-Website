@@ -119,140 +119,58 @@
             </div> <!-- End .row -->
         </div>
     </section>
-     <!-- End Post Grid Section -->
+    <!-- End Post Grid Section -->
 
-    <!-- ======= Culture Category Section ======= -->
-    <section class="category-section">
+        @foreach ($categories as $category)
+        <!-- ======= Category Section ======= -->
+        <section class="category-section">
         <div class="container" data-aos="fade-up">
-
             <div class="section-header d-flex justify-content-between align-items-center mb-5">
-                <h2>Culture</h2>
-                <div><a href="{{ route('category', ['id' => 2]) }}" class="more">See All Culture</a></div>
+            <h2>{{ $category->name }}</h2>
+            <div><a href="{{ route('category', ['id' => $category->id]) }}" class="more">See All {{ $category->name }}</a></div>
             </div>
-
             <div class="row">
-                <div class="col-md-9 order-md-2">
-                    @foreach ($cultures as $item)
-                    <div class="d-lg-flex post-entry-2">
-                        <a href="{{ route('single-post', ['id' => $item->id]) }}" class="me-4 thumbnail mb-4 mb-lg-0 d-inline-block">
-                            <img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid">
-                        </a>
-                        <div>
-                            <div class="post-meta"><span class="date">{{$item->category->name}}</span> <span
-                                    class="mx-1">&bullet;</span> <span>{{$item->created_at->format('M jS, Y')}}</span></div>
-                            <h3><a href="{{ route('single-post', ['id' => $item->id]) }}">{{$item->judul}}</a></h3>
-                            <p>{{Str::limit($item->isi,100)}}</p>
-                            <div class="d-flex align-items-center author">
-                                <div class="name">
-                                    <h3 class="m-0 p-0">{{$item->penulis}}</h3>
-                                </div>
-                            </div>
-                        </div>
+            <div class="col-md-9 order-md-2">
+                @foreach ($category->articles->take(5) as $item)
+                <div class="d-lg-flex post-entry-2">
+                <a href="{{ route('single-post', ['id' => $item->id]) }}" class="me-4 thumbnail mb-4 mb-lg-0 d-inline-block">
+                    <img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid">
+                </a>
+                <div>
+                    <div class="post-meta">
+                    <span class="date">{{ $item->category->name }}</span>
+                    <span class="mx-1">&bullet;</span>
+                    <span>{{ $item->created_at->format('M jS, Y') }}</span>
                     </div>
-                    @endforeach
-                </div>
-
-                <div class="col-md-3">
-                    @foreach ($culture as $item)
-                    <div class="post-entry-1 border-bottom">
-                        <div class="post-meta"><span class="date"></span>{{$item->category->name}} <span
-                                class="mx-1">&bullet;</span> <span>{{$item->created_at->format('M jS, Y')}}</span></div>
-                        <h2 class="mb-2"><a href="/single-post">{{$item->judul}}</a></h2>
-                        <span class="author mb-3 d-block">{{$item->penulis}}</span>
+                    <h3><a href="{{ route('single-post', ['id' => $item->id]) }}">{{ $item->judul }}</a></h3>
+                    <p>{{ Str::limit($item->isi, 100) }}</p>
+                    <div class="d-flex align-items-center author">
+                    <div class="name">
+                        <h3 class="m-0 p-0">{{ $item->penulis }}</h3>
                     </div>
-                    @endforeach
+                    </div>
                 </div>
+                </div>
+                @endforeach
+            </div>
+    
+            <div class="col-md-3">
+                @foreach ($category->articles->take(5) as $item)
+                <div class="post-entry-1 border-bottom">
+                <div class="post-meta">
+                    <span class="date">{{ $item->category->name }}</span>
+                    <span class="mx-1">&bullet;</span>
+                    <span>{{ $item->created_at->format('M jS, Y') }}</span>
+                </div>
+                <h2 class="mb-2">
+                    <a href="{{ route('single-post', ['id' => $item->id]) }}">{{ $item->judul }}</a>
+                </h2>
+                <span class="author mb-3 d-block">{{ $item->penulis }}</span>
+                </div>
+                @endforeach
+            </div>
             </div>
         </div>
-    </section>
-    <!-- End Culture Category Section -->
-
-    <!-- ======= Business Category Section ======= -->
-    <section class="category-section">
-        <div class="container" data-aos="fade-up">
-
-            <div class="section-header d-flex justify-content-between align-items-center mb-5">
-                <h2>Business</h2>
-                <div><a href="/category" class="more">See All Business</a></div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-9 order-md-2">
-                    @foreach ($business as $item)
-                    <div class="d-lg-flex post-entry-2">
-                        <a href="{{ route('single-post', ['id' => $item->id]) }}" class="me-4 thumbnail d-inline-block mb-4 mb-lg-0">
-                            <img src="assets/img/post-landscape-3.jpg" alt="" class="img-fluid">
-                        </a>
-                        <div>
-                            <div class="post-meta"><span class="date">{{$item->category->name}}</span> <span
-                                    class="mx-1">&bullet;</span> <span>{{$item->created_at->format('M jS, Y')}}</span></div>
-                            <h3><a href="{{ route('single-post', ['id' => $item->id]) }}">{{$item->judul}}</a></h3>
-                            <p>{{Str::limit($item->isi,100)}}</p>
-                            <div class="d-flex align-items-center author">
-                                <div class="name">
-                                    <h3 class="m-0 p-0">{{$item->penulis}}</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-                <div class="col-md-3">
-                    @foreach ($business1 as $item)
-                    <div class="post-entry-1 border-bottom">
-                        <div class="post-meta"><span class="date">{{$item->category->name}}</span> <span
-                                class="mx-1">&bullet;</span> <span>{{$item->created_at->format('M jS, Y')}}</span></div>
-                        <h2 class="mb-2"><a href="{{ route('single-post', ['id' => $item->id]) }}">{{$item->judul}}</a></h2>
-                        <span class="author mb-3 d-block">{{$item->penulis}}</span>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </section><!-- End Business Category Section -->
-
-    <!-- ======= Lifestyle Category Section ======= -->
-    <section class="category-section">
-        <div class="container" data-aos="fade-up">
-
-            <div class="section-header d-flex justify-content-between align-items-center mb-5">
-                <h2>Celebrity</h2>
-                <div><a href="/category" class="more">See All Celebrity</a></div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-9 order-md-2">
-                    @foreach ($lifestyles as $item)
-                    <div class="d-lg-flex post-entry-2">
-                        <a href="{{ route('single-post', ['id' => $item->id]) }}" class="me-4 thumbnail d-inline-block mb-4 mb-lg-0">
-                            <img src="assets/img/post-landscape-3.jpg" alt="" class="img-fluid">
-                        </a>
-                        <div>
-                            <div class="post-meta"><span class="date">{{$item->category->name}}</span> <span
-                                    class="mx-1">&bullet;</span> <span>{{$item->created_at->format('M jS, Y')}}</span></div>
-                            <h3><a href="{{ route('single-post', ['id' => $item->id]) }}">{{$item->judul}}</a></h3>
-                            <p>{{Str::limit($item->isi,100)}}</p>
-                            <div class="d-flex align-items-center author">
-                                <div class="name">
-                                    <h3 class="m-0 p-0">{{$item->penulis}}</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-                <div class="col-md-3">
-                    @foreach ($lifestyles as $item)
-                    <div class="post-entry-1 border-bottom">
-                        <div class="post-meta"><span class="date">{{$item->category->name}}</span> <span
-                                class="mx-1">&bullet;</span> <span>{{$item->created_at->format('M jS, Y')}}</span></div>
-                        <h2 class="mb-2"><a href="{{ route('single-post', ['id' => $item->id]) }}">{{$item->judul}}</a></h2>
-                        <span class="author mb-3 d-block">{{$item->penulis}}</span>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Lifestyle Category Section -->
+        </section><!-- End Category Section -->
+        @endforeach
 </x-layout>

@@ -20,7 +20,7 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::get('/', [ArticleController::class, 'shows', 'showc'])->name('home'); 
+Route::get('/', [ArticleController::class, 'indexs'])->name('home'); 
 
 Route::get('/about', function () {
     return view('about', ['title' => 'About']);
@@ -54,7 +54,7 @@ Route::get('/password', function () {
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard', ['title' => 'Admin Dashboard']);
-});
+})->name('dashboard')->middleware('auth');
 
 Route::resource('categorydb', CategoryController::class)->only(['index', 'store', 'update', 'destroy']);
 
@@ -66,6 +66,8 @@ Route::resource('user', UserController::class);
 Route::get('/articledb', function () {
     return view('admin/articledb', ['title' => 'Admin Article']);
 });
+
+Route::resource('articledb', ArticleController::class)->only(['index', 'store', 'update', 'destroy']);
 
 Route::get('/categorydb', function () {
     return view('admin/categorydb', ['title' => 'Admin Category']);

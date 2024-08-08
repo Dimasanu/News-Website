@@ -42,8 +42,14 @@
           </form>
         </div><!-- End Search Form -->
 
-        <!-- Login Button -->
-        <a href="/login" class="btn btn-primary mx-2">Login</a>
+        @if(Auth::check())
+        <a href="{{ route('logout') }}" class="btn btn-primary mx-2" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          @csrf
+        </form>
+        @else
+          <a href="/login" class="btn btn-primary mx-2">Login</a>
+        @endif
 
       </div>
 
