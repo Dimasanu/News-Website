@@ -7,14 +7,24 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        // Mendapatkan semua artikel dari database
-        $articles = Article::all();
-        return view('articles.index', compact('articles'));
+        $posts = Article::take(5)->get();
+        $latest = Article::orderBy('created_at', 'desc')->take(5)->get();
+        $cultures = Article::where('category_id', 10)->take(5)->get();
+        $culture = Article::where('category_id', 10)->orderBy('created_at', 'desc')->take(5)->get();
+        $business = Article::where('category_id', 9)->take(5)->get();
+        $business1 = Article::where('category_id', 9)->orderBy('created_at', 'desc')->take(5)->get();
+        
+        return view('index', [
+            'title' => 'Home',
+            'posts' => $posts,
+            'latest' => $latest,
+            'cultures' => $cultures,
+            'culture' => $culture,
+            'business' => $business,
+            'business1' => $business1,
+        ]);
     }
 
     /**

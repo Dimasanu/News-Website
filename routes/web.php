@@ -19,9 +19,7 @@ use App\Http\Controllers\ArticleController;
 |
 */
 
-Route::get('/', function () {
-    return view('index', ['title' => 'Home']);
-})->name('home');
+Route::get('/', [ArticleController::class, 'index'])->name('home');
 
 Route::get('/about', function () {
     return view('about', ['title' => 'About']);
@@ -67,7 +65,7 @@ Route::get('/article', function () {
     return view('admin.article', ['title' => 'Admin Article']);
 });
 
-Route::get('/category', function () {
+Route::get('/admin/category', function () {
     return view('admin.category', ['title' => 'Admin Category']);
 });
 
