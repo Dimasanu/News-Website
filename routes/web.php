@@ -19,7 +19,7 @@ use App\Http\Controllers\ArticleController;
 |
 */
 
-Route::get('/', [ArticleController::class, 'show'])->name('home');
+Route::get('/', [ArticleController::class, 'show'])->name('home'); 
 
 Route::get('/about', function () {
     return view('about', ['title' => 'About']);
