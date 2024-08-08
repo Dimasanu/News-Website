@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    public function index()
+    public function show()
     {
         $posts = Article::take(5)->get();
         $latest = Article::orderBy('created_at', 'desc')->take(5)->get();
@@ -65,15 +65,6 @@ class ArticleController extends Controller
         ]);
 
         return redirect()->route('articles.index')->with('success', 'Article created successfully.');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Article $article)
-    {
-        // Menampilkan detail artikel
-        return view('articles.show', compact('article'));
     }
 
     /**
