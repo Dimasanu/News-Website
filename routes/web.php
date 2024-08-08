@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\PasswordResetController;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,7 +56,11 @@ Route::get('/password', function () {
 });
 
 Route::get('/account', function () {
-    return view('account', ['title' => 'account']);
+    return view('account', ['title' => 'Account']);
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard', ['title' => 'Admin Dashboard']);
 });
 
 //login route
