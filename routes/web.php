@@ -5,7 +5,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\ArticleController;
-
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
 
 
 /*
@@ -19,7 +20,7 @@ use App\Http\Controllers\ArticleController;
 |
 */
 
-Route::get('/', [ArticleController::class, 'show'])->name('home'); 
+Route::get('/', [ArticleController::class, 'shows', 'showc'])->name('home'); 
 
 Route::get('/about', function () {
     return view('about', ['title' => 'About']);
@@ -29,17 +30,15 @@ Route::get('/contact', function () {
     return view('contact', ['title' => 'Contact']);
 });
 
-Route::get('/category', function () {
-    return view('category', ['title' => 'Category']);
-});
+Route::get('/category', [ArticleController::class, 'showAllCategories'])->name('all-categories');
+
+Route::get('/category/{id}', [ArticleController::class, 'showc'])->name('category');
 
 Route::get('/search-result', function () {
     return view('search-result', ['title' => 'search-result']);
 });
 
-Route::get('/single-post', function () {
-    return view('single-post', ['title' => 'single-post']);
-});
+Route::get('/single-post/{id}', [ArticleController::class, 'show'])->name('single-post');
 
 Route::get('/login', function () {
     return view('/auth/login', ['title' => 'Login']);
@@ -57,17 +56,21 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard', ['title' => 'Admin Dashboard']);
 });
 
-Route::get('/account', function () {
-    return view('admin.account', ['title' => 'Admin Account']);
+Route::resource('categorydb', CategoryController::class)->only(['index', 'store', 'update', 'destroy']);
+
+Route::get('/user', function () {
+    return view('admin/user', ['title' => 'Admin User']);
+});
+Route::resource('user', UserController::class);
+
+Route::get('/articledb', function () {
+    return view('admin/articledb', ['title' => 'Admin Article']);
 });
 
-Route::get('/article', function () {
-    return view('admin.article', ['title' => 'Admin Article']);
+Route::get('/categorydb', function () {
+    return view('admin/categorydb', ['title' => 'Admin Category']);
 });
 
-Route::get('/admin/category', function () {
-    return view('admin.category', ['title' => 'Admin Category']);
-});
 
 //login route
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\category;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    public function show()
+    public function shows()
     {
         $posts = Article::take(5)->get();
         $latest = Article::orderBy('created_at', 'desc')->take(5)->get();
@@ -15,6 +16,8 @@ class ArticleController extends Controller
         $culture = Article::where('category_id', 10)->orderBy('created_at', 'desc')->take(5)->get();
         $business = Article::where('category_id', 9)->take(5)->get();
         $business1 = Article::where('category_id', 9)->orderBy('created_at', 'desc')->take(5)->get();
+        $lifestyles = Article::where('category_id', 14)->take(5)->get();
+        $lifestyle = Article::where('category_id', 14)->orderBy('created_at', 'desc')->take(5)->get();
         
         return view('index', [
             'title' => 'Home',
@@ -24,6 +27,42 @@ class ArticleController extends Controller
             'culture' => $culture,
             'business' => $business,
             'business1' => $business1,
+            'lifestyles'=>$lifestyles,
+            'lifestyle'=>$lifestyle,
+        ]);
+    }
+
+    public function show($id)
+    {
+        $article = Article::findOrFail($id);
+        return view('single-post', [
+            'title' => $article->judul,
+            'article' => $article,
+        ]);
+        
+    }
+
+    public function showc($id)
+    {
+        $category = category::findOrFail($id);
+        $articles = Article::where('category_id', $id)->paginate(5);
+        
+        return view('category', [
+            'title' => $category->name,
+            'articles' => $articles,
+            'category' => $category,
+        ]);
+        
+    }
+
+    public function showAllCategories()
+    {
+        $articles = Article::paginate(5); // Menampilkan semua artikel dengan pagination
+
+        return view('category', [
+            'title' => 'All Categories',
+            'articles' => $articles,
+            'category' => null,
         ]);
     }
 

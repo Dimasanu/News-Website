@@ -1,7 +1,6 @@
 <div class="col-md-3">
     <!-- ======= Sidebar ======= -->
     <div class="aside-block">
-
         <ul class="nav nav-pills custom-tab-nav mb-4" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="pills-latest-tab" data-bs-toggle="pill"
@@ -11,89 +10,41 @@
         </ul>
 
         <div class="tab-content" id="pills-tabContent">
-
             <!-- Latest -->
             <div class="tab-pane fade" id="pills-latest" role="tabpanel"
                 aria-labelledby="pills-latest-tab">
+                @foreach ($latestArticles as $item)
                 <div class="post-entry-1 border-bottom">
-                    <div class="post-meta"><span class="date">Lifestyle</span> <span
-                            class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                    <h2 class="mb-2"><a href="#">Life Insurance And Pregnancy: A Working Mom’s
-                            Guide</a></h2>
-                    <span class="author mb-3 d-block">Jenny Wilson</span>
+                    <div class="post-meta">
+                        <span class="date">{{ $item->category->name }}</span>
+                        <span class="mx-1">&bullet;</span>
+                        <span>{{ $item->created_at->format('M jS, Y') }}</span>
+                    </div>
+                    <h2 class="mb-2">
+                        <a href="{{ route('single-post', ['id' => $item->id]) }}">{{ $item->judul }}</a>
+                    </h2>
+                    <span class="author mb-3 d-block">{{ $item->penulis }}</span>
                 </div>
-
-                <div class="post-entry-1 border-bottom">
-                    <div class="post-meta"><span class="date">Business</span> <span
-                            class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                    <h2 class="mb-2"><a href="#">The Best Homemade Masks for Face (keep the
-                            Pimples Away)</a></h2>
-                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                </div>
-
-                <div class="post-entry-1 border-bottom">
-                    <div class="post-meta"><span class="date">Lifestyle</span> <span
-                            class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                    <h2 class="mb-2"><a href="#">10 Life-Changing Hacks Every Working Mom
-                            Should Know</a></h2>
-                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                </div>
-
-                <div class="post-entry-1 border-bottom">
-                    <div class="post-meta"><span class="date">Sport</span> <span
-                            class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                    <h2 class="mb-2"><a href="#">How to Avoid Distraction and Stay Focused
-                            During Video Calls?</a></h2>
-                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                </div>
-
-                <div class="post-entry-1 border-bottom">
-                    <div class="post-meta"><span class="date">Lifestyle</span> <span
-                            class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                    <h2 class="mb-2"><a href="#">17 Pictures of Medium Length Hair in Layers
-                            That Will Inspire Your New Haircut</a></h2>
-                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                </div>
-
-                <div class="post-entry-1 border-bottom">
-                    <div class="post-meta"><span class="date">Culture</span> <span
-                            class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                    <h2 class="mb-2"><a href="#">9 Half-up/half-down Hairstyles for Long and
-                            Medium Hair</a></h2>
-                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                </div>
-
+                @endforeach
             </div> <!-- End Latest -->
-
         </div>
     </div>
 
     <div class="aside-block">
         <h3 class="aside-title">Categories</h3>
         <ul class="aside-links list-unstyled">
-            <li><a href="/category"><i class="bi bi-chevron-right"></i> Business</a></li>
-            <li><a href="/category"><i class="bi bi-chevron-right"></i> Culture</a></li>
-            <li><a href="/category"><i class="bi bi-chevron-right"></i> Sport</a></li>
-            <li><a href="/category"><i class="bi bi-chevron-right"></i> Food</a></li>
-            <li><a href="/category"><i class="bi bi-chevron-right"></i> Politics</a></li>
-            <li><a href="/category"><i class="bi bi-chevron-right"></i> Celebrity</a></li>
-            <li><a href="/category"><i class="bi bi-chevron-right"></i> Startups</a></li>
-            <li><a href="/category"><i class="bi bi-chevron-right"></i> Travel</a></li>
+            @foreach ($categories as $category)
+            <li><a href="{{ route('category', ['id' => $category->id]) }}"><i class="bi bi-chevron-right"></i> {{ $category->name }}</a></li>
+            @endforeach
         </ul>
     </div><!-- End Categories -->
 
     <div class="aside-block">
         <h3 class="aside-title">Tags</h3>
         <ul class="aside-tags list-unstyled">
-            <li><a href="/category">Business</a></li>
-            <li><a href="/category">Culture</a></li>
-            <li><a href="/category">Sport</a></li>
-            <li><a href="/category">Food</a></li>
-            <li><a href="/category">Politics</a></li>
-            <li><a href="/category">Celebrity</a></li>
-            <li><a href="/category">Startups</a></li>
-            <li><a href="/category">Travel</a></li>
+            @foreach ($categories as $category)
+            <li><a href="{{ route('category', ['id' => $category->id]) }}">{{ $category->name }}</a></li>
+            @endforeach
         </ul>
     </div><!-- End Tags -->
-
 </div>

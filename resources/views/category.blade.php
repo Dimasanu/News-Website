@@ -1,137 +1,43 @@
 <x-layout>
-  <x-slot:title>{{ $title }}</x-slot:title>
+    <x-slot:title>{{ $title }}</x-slot:title>
     <section>
         <div class="container">
             <div class="row">
-
+    
                 <div class="col-md-9" data-aos="fade-up">
-                    <h3 class="category-title">Category: Business</h3>
-
+                    <h3 class="category-title">Category: {{ $category ? $category->name : 'All Categories' }}</h3>
+        
+                    @foreach ($articles as $article)
                     <div class="d-md-flex post-entry-2 half">
-                        <a href="/single-post" class="me-4 thumbnail">
-                            <img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid">
+                        <a href="{{ route('single-post', ['id' => $article->id]) }}" class="me-4 thumbnail">
+                            <img src="{{ asset('assets/img/post-landscape-6.jpg') }}" alt="" class="img-fluid">
                         </a>
                         <div>
-                            <div class="post-meta"><span class="date">Culture</span> <span
-                                    class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                            <h3><a href="/single-post">What is the son of Football Coach John Gruden, Deuce Gruden doing
-                                    Now?</a></h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio placeat
-                                exercitationem magni voluptates dolore. Tenetur fugiat voluptates quas, nobis error
-                                deserunt aliquam temporibus sapiente, laudantium dolorum itaque libero eos deleniti?</p>
-                            <div class="d-flex align-items-center author">
-                                <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid">
+                            <div class="post-meta">
+                                <span class="date">{{ $article->category->name }}</span>
+                                <span class="mx-1">&bullet;</span>
+                                <span>{{ $article->created_at->format('M jS, Y') }}</span>
                                 </div>
+                                <h3><a href="{{ route('single-post', ['id' => $article->id]) }}">{{ $article->judul }}</a></h3>
+                                <p>{{ $article->isi }}</p>
+                                <div class="d-flex align-items-center author">
                                 <div class="name">
-                                    <h3 class="m-0 p-0">Wade Warren</h3>
+                                    <h3 class="m-0 p-0">{{ $article->penulis }}</h3>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="d-md-flex post-entry-2 half">
-                        <a href="/single-post" class="me-4 thumbnail">
-                            <img src="assets/img/post-landscape-1.jpg" alt="" class="img-fluid">
-                        </a>
-                        <div>
-                            <div class="post-meta"><span class="date">Culture</span> <span
-                                    class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                            <h3><a href="/single-post">What is the son of Football Coach John Gruden, Deuce Gruden doing
-                                    Now?</a></h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio placeat
-                                exercitationem magni voluptates dolore. Tenetur fugiat voluptates quas, nobis error
-                                deserunt aliquam temporibus sapiente, laudantium dolorum itaque libero eos deleniti?</p>
-                            <div class="d-flex align-items-center author">
-                                <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid">
-                                </div>
-                                <div class="name">
-                                    <h3 class="m-0 p-0">Wade Warren</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="d-md-flex post-entry-2 half">
-                        <a href="/single-post" class="me-4 thumbnail">
-                            <img src="assets/img/post-landscape-2.jpg" alt="" class="img-fluid">
-                        </a>
-                        <div>
-                            <div class="post-meta"><span class="date">Culture</span> <span
-                                    class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                            <h3><a href="/single-post">What is the son of Football Coach John Gruden, Deuce Gruden doing
-                                    Now?</a></h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio placeat
-                                exercitationem magni voluptates dolore. Tenetur fugiat voluptates quas, nobis error
-                                deserunt aliquam temporibus sapiente, laudantium dolorum itaque libero eos deleniti?</p>
-                            <div class="d-flex align-items-center author">
-                                <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid">
-                                </div>
-                                <div class="name">
-                                    <h3 class="m-0 p-0">Wade Warren</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="d-md-flex post-entry-2 half">
-                        <a href="/single-post" class="me-4 thumbnail">
-                            <img src="assets/img/post-landscape-3.jpg" alt="" class="img-fluid">
-                        </a>
-                        <div>
-                            <div class="post-meta"><span class="date">Culture</span> <span
-                                    class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                            <h3><a href="/single-post">What is the son of Football Coach John Gruden, Deuce Gruden doing
-                                    Now?</a></h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio placeat
-                                exercitationem magni voluptates dolore. Tenetur fugiat voluptates quas, nobis error
-                                deserunt aliquam temporibus sapiente, laudantium dolorum itaque libero eos deleniti?</p>
-                            <div class="d-flex align-items-center author">
-                                <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid">
-                                </div>
-                                <div class="name">
-                                    <h3 class="m-0 p-0">Wade Warren</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="d-md-flex post-entry-2 half">
-                        <a href="/single-post" class="me-4 thumbnail">
-                            <img src="assets/img/post-landscape-4.jpg" alt="" class="img-fluid">
-                        </a>
-                        <div>
-                            <div class="post-meta"><span class="date">Culture</span> <span
-                                    class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                            <h3><a href="/single-post">What is the son of Football Coach John Gruden, Deuce Gruden doing
-                                    Now?</a></h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio placeat
-                                exercitationem magni voluptates dolore. Tenetur fugiat voluptates quas, nobis error
-                                deserunt aliquam temporibus sapiente, laudantium dolorum itaque libero eos deleniti?</p>
-                            <div class="d-flex align-items-center author">
-                                <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid">
-                                </div>
-                                <div class="name">
-                                    <h3 class="m-0 p-0">Wade Warren</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    @endforeach
+        
                     <div class="text-start py-4">
                         <div class="custom-pagination">
-                            <a href="#" class="prev">Prevous</a>
-                            <a href="#" class="active">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a href="#" class="next">Next</a>
+                            {{ $articles->links('pagination::bootstrap-4') }}
                         </div>
                     </div>
                 </div>
-
+    
                 <x-sidebar-list></x-sidebar-list>
-
+    
             </div>
         </div>
     </section>
