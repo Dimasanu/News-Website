@@ -55,12 +55,20 @@ Route::get('/password', function () {
     return view('/auth/password', ['title' => 'Reset Password']);
 });
 
-Route::get('/account', function () {
-    return view('account', ['title' => 'Account']);
+Route::get('/dashboard', function () {
+    return view('admin.dashboard', ['title' => 'Admin Dashboard']);
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard', ['title' => 'Admin Dashboard']);
+Route::get('/account', function () {
+    return view('admin.account', ['title' => 'Admin Account']);
+});
+
+Route::get('/article', function () {
+    return view('admin.article', ['title' => 'Admin Article']);
+});
+
+Route::get('/category', function () {
+    return view('admin.category', ['title' => 'Admin Category']);
 });
 
 //login route
