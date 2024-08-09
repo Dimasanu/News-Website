@@ -7,15 +7,15 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Dashboard
                 </a>
-                <a class="nav-link" href="/account">
+                <a class="nav-link" href="/user">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                    Account
+                    User
                 </a>
-                <a class="nav-link" href="/article">
+                <a class="nav-link" href="/articledb">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Article
                 </a>
-                <a class="nav-link" href="/category">
+                <a class="nav-link" href="/categorydb">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Category
                 </a>
