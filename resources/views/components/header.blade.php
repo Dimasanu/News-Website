@@ -11,13 +11,11 @@
         <ul>
           <li><a href="/">Blog</a></li>
           <li class="dropdown"><a href="{{ route('all-categories') }}"><span>Categories</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="/search-result">Search Result</a></li>
-              <li><a href="#">Drop Down 1</a></li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
+              <ul>
+                  @foreach($categories as $category)
+                      <li><a href="{{ route('category', ['id' => $category->id]) }}">{{ $category->name }}</a></li>
+                  @endforeach
+              </ul>
           </li>
 
           <li><a href="/about">About</a></li>
