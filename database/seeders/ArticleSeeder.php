@@ -22,7 +22,7 @@ class ArticleSeeder extends Seeder
                 'judul' => 'Judul Artikel ' . $i,
                 'penulis' => 'Penulis ' . $i,
                 'isi' => 'Isi dari artikel ' . $i . ' yang sangat informatif.',
-                'category_id' => rand(9, 16),
+                'category_id' => rand(1, 8),
                 'gambar' => 'gambar-' . $i . '.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
