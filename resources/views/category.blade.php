@@ -10,7 +10,7 @@
                     @foreach ($articles as $article)
                     <div class="d-md-flex post-entry-2 half">
                         <a href="{{ route('single-post', ['id' => $article->id]) }}" class="me-4 thumbnail">
-                            <img src="{{ asset('assets/img/post-landscape-6.jpg') }}" alt="" class="img-fluid">
+                            <img src="{{ asset('storage/images/' . $article->gambar)}}" alt="" class="img-fluid">
                         </a>
                         <div>
                             <div class="post-meta">

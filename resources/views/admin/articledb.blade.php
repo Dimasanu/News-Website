@@ -41,7 +41,7 @@
                             <td>{{ $article->penulis }}</td>
                             <td>{{ $article->isi }}</td>
                             <td>{{ $article->category->name }}</td>
-                            <td><img src="{{ $article->gambar }}" alt="{{ $article->judul }}" width="50"></td>
+                            <td><img src="{{ asset('storage/images/' . $article->gambar) }}" alt="{{ $article->judul }}" width="50"></td>
                             <td>{{ $article->created_at }}</td>
                             <td>
                                 <div class="d-flex justify-content-center">
@@ -72,35 +72,38 @@
                 <a href="{{ route('articles.index') }}" class="btn-close" aria-label="Close"></a>
             </div>
             <div class="modal-body">
-                <form action="{{ request('edit') ? route('articles.update', request('edit')) : route('articles.store') }}" method="POST">
+                <form action="{{ request('edit') ? route('articles.update', request('edit')) : route('articles.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @if(request('edit'))
                         @method('PUT')
                     @endif
                     <div class="mb-3">
                         <label for="dataTitle" class="form-label">Judul</label>
-                        <input type="text" class="form-control" id="dataTitle" name="judul" value="{{ request('edit') ? $articles->where('id', request('edit'))->first()->judul : '' }}" required>
+                        <input type="text" class="form-control" id="dataTitle" name="judul" value="{{ request('edit') ? $editArticle->judul : '' }}" required>
                     </div>
                     <div class="mb-3">
                         <label for="dataWriter" class="form-label">Penulis</label>
-                        <input type="text" class="form-control" id="dataWriter" name="penulis" value="{{ request('edit') ? $articles->where('id', request('edit'))->first()->penulis : '' }}" required>
+                        <input type="text" class="form-control" id="dataWriter" name="penulis" value="{{ request('edit') ? $editArticle->penulis : '' }}" required>
                     </div>
                     <div class="mb-3">
                         <label for="dataFill" class="form-label">Isi</label>
-                        <textarea class="form-control" id="dataFill" name="isi" required>{{ request('edit') ? $articles->where('id', request('edit'))->first()->isi : '' }}</textarea>
+                        <textarea class="form-control" id="dataFill" name="isi" required>{{ request('edit') ? $editArticle->isi : '' }}</textarea>
                     </div>
                     <div class="mb-3">
                         <label for="dataCategory" class="form-label">Kategori</label>
                         <select class="form-control" id="dataCategory" name="category_id" required>
                             <option value="" disabled selected>Pilih Kategori</option>
                             @foreach($categories as $category)
-                                <option value="{{ $category->id }}" {{ request('edit') && $articles->where('id', request('edit'))->first()->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                <option value="{{ $category->id }}" {{ request('edit') && $editArticle->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="dataImage" class="form-label">Gambar</label>
-                        <input type="text" class="form-control" id="dataImage" name="gambar" value="{{ request('edit') ? $articles->where('id', request('edit'))->first()->gambar : '' }}" required>
+                        <input type="file" class="form-control" id="dataImage" name="gambar" {{ request('edit') ? '' : 'required' }}>
+                        @if(request('edit'))
+                            <img src="{{ asset('storage/images/' . $editArticle->gambar) }}" alt="{{ $editArticle->judul }}" width="100" class="mt-2">
+                        @endif
                     </div>
                     <button type="submit" class="btn btn-primary">{{ request('edit') ? 'Update' : 'Save' }}</button>
                 </form>

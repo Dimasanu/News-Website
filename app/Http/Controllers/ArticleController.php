@@ -79,10 +79,19 @@ class ArticleController extends Controller
             'penulis' => 'required|string|max:255',
             'isi' => 'required',
             'category_id' => 'required|exists:categories,id',
-            'gambar' => 'required|string',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        Article::create($request->all());
+        // Handle image upload
+        $path = $request->file('gambar')->store('public/images');
+
+        Article::create([
+            'judul' => $request->judul,
+            'penulis' => $request->penulis,
+            'isi' => $request->isi,
+            'category_id' => $request->category_id,
+            'gambar' => basename($path),
+        ]);
 
         return redirect()->route('articles.index')->with('success', 'Article added successfully.');
     }
@@ -94,16 +103,31 @@ class ArticleController extends Controller
             'penulis' => 'required|string|max:255',
             'isi' => 'required',
             'category_id' => 'required|exists:categories,id',
-            'gambar' => 'required|string',
+            'gambar' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $article->update($request->all());
+        if ($request->hasFile('gambar')) {
+            // Delete old image
+            if ($article->gambar) {
+                Storage::delete('public/images/' . $article->gambar);
+            }
+
+            // Upload new image
+            $path = $request->file('gambar')->store('public/images');
+            $article->gambar = basename($path);
+        }
+
+        $article->update($request->except('gambar'));
 
         return redirect()->route('articles.index')->with('success', 'Article updated successfully.');
     }
 
     public function destroy(Article $article)
     {
+        if ($article->gambar) {
+            Storage::delete('public/images/' . $article->gambar);
+        }
+
         $article->delete();
 
         return redirect()->route('articles.index')->with('success', 'Article deleted successfully.');

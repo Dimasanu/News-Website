@@ -86,7 +86,7 @@
                                 <div class="post-meta"><span class="date">{{ $item->category->name }}</span> <span
                                         class="mx-1">&bullet;</span>
                                     <span>{{ $item->created_at->format('M jS, Y') }}</span></div>
-                                <h2><a href="/single-post">{{ $item->judul }}</a></h2>
+                                <h2><a href="{{ route('single-post', ['id' => $item->id]) }}">{{ $item->judul }}</a></h2>
                                 <p class="mb-4 d-block">{{ Str::limit($item->isi, 100) }}</p>
                                 <div class="d-flex align-items-center author">
                                     <div class="name">
@@ -95,7 +95,7 @@
                                 </div>
                             </div>
                             <a href="{{ route('single-post', ['id' => $item->id]) }}"><img
-                                    src="assets/img/post-landscape-1.jpg" alt="" class="img-fluid"
+                                    src="{{ asset('storage/images/' . $item->gambar)}}" alt="" class="img-fluid"
                                     style="max-width: 500px; height: auto; margin-left:20px;"></a>
                         </div>
                     @endforeach
@@ -140,7 +140,7 @@
                             <div class="d-lg-flex post-entry-2">
                                 <a href="{{ route('single-post', ['id' => $item->id]) }}"
                                     class="me-4 thumbnail mb-4 mb-lg-0 d-inline-block">
-                                    <img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid"
+                                    <img src="{{ asset('storage/images/' . $item->gambar) }}" alt="{{ $item->judul }}" class="img-fluid"
                                         style="max-width: 500px; height: auto;">
                                 </a>
                                 <div>
@@ -149,9 +149,7 @@
                                         <span class="mx-1">&bullet;</span>
                                         <span>{{ $item->created_at->format('M jS, Y') }}</span>
                                     </div>
-                                    <h3><a
-                                            href="{{ route('single-post', ['id' => $item->id]) }}">{{ $item->judul }}</a>
-                                    </h3>
+                                    <h3><a href="{{ route('single-post', ['id' => $item->id]) }}">{{ $item->judul }}</a></h3>
                                     <p>{{ Str::limit($item->isi, 100) }}</p>
                                     <div class="d-flex align-items-center author">
                                         <div class="name">

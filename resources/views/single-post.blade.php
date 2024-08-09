@@ -16,7 +16,7 @@
               <h1 class="mb-5">{{ $article->judul }}</h1>
               <!-- Gambar pertama dengan keterangan -->
               <figure class="my-4">
-                <img src="{{ asset('assets/img/post-landscape-1.jpg') }}" alt="" class="img-fluid">
+                <img src="{{ asset('storage/images/' . $article->gambar)}}" alt="" class="img-fluid">
                 <figcaption>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, odit?</figcaption>
               </figure>
 
