@@ -56,19 +56,18 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard', ['title' => 'Admin Dashboard']);
 })->name('dashboard')->middleware('auth');
 
-Route::resource('categorydb', CategoryController::class)->only(['index', 'store', 'update', 'destroy']);
+
 
 Route::get('/user', function () {
     return view('admin/user', ['title' => 'Admin User']);
 });
 Route::resource('user', UserController::class);
 
-Route::get('/articledb', function () {
-    return view('admin/articledb', ['title' => 'Admin Article']);
-});
-
 Route::resource('articledb', ArticleController::class)->only(['index', 'store', 'update', 'destroy']);
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+Route::resource('articles', ArticleController::class);
 
+Route::resource('categorydb', CategoryController::class)->only(['index', 'store', 'update', 'destroy']);
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::resource('categories', CategoryController::class);
 

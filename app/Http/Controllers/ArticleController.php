@@ -59,55 +59,53 @@ class ArticleController extends Controller
     }
 
     // Function to display the admin page for articles
-    public function index()
+    public function index(Request $request)
     {
-        $articledb = Article::all();  // Get all articles
-        $categories = Category::all();  // Get all categories
-        return view('admin.articledb', compact('articledb', 'categories'));
+        $articles = Article::all();
+        $categories = Category::all();
+        $editArticle = null;
+
+        if ($request->has('edit')) {
+            $editArticle = Article::findOrFail($request->edit);
+        }
+
+        return view('admin.articledb', compact('articles', 'categories', 'editArticle'));
     }
 
-    // Function to store a new article
     public function store(Request $request)
     {
         $request->validate([
-            'judul' => 'required',
-            'penulis' => 'required',
+            'judul' => 'required|string|max:255',
+            'penulis' => 'required|string|max:255',
             'isi' => 'required',
-            'category_id' => 'required',
-            'gambar' => 'required',
+            'category_id' => 'required|exists:categories,id',
+            'gambar' => 'required|string',
         ]);
 
-        Article::create($request->all());  // Create a new article with the request data
+        Article::create($request->all());
 
-        return redirect()->route('articledb.index')
-                        ->with('success', 'Article created successfully.');
+        return redirect()->route('articles.index')->with('success', 'Article added successfully.');
     }
 
-    // Function to update an existing article
-    public function update(Request $request, $id)
+    public function update(Request $request, Article $article)
     {
         $request->validate([
-            'judul' => 'required',
-            'penulis' => 'required',
+            'judul' => 'required|string|max:255',
+            'penulis' => 'required|string|max:255',
             'isi' => 'required',
-            'category_id' => 'required',
-            'gambar' => 'required',
+            'category_id' => 'required|exists:categories,id',
+            'gambar' => 'required|string',
         ]);
 
-        $article = Article::findOrFail($id);  // Find the article by its ID or throw 404
-        $article->update($request->all());  // Update the article with the request data
+        $article->update($request->all());
 
-        return redirect()->route('articledb.index')
-                        ->with('success', 'Article updated successfully.');
+        return redirect()->route('articles.index')->with('success', 'Article updated successfully.');
     }
 
-    // Function to delete an existing article
-    public function destroy($id)
+    public function destroy(Article $article)
     {
-        $article = Article::findOrFail($id);  // Find the article by its ID or throw 404
-        $article->delete();  // Delete the article
+        $article->delete();
 
-        return redirect()->route('articledb.index')
-                        ->with('success', 'Article deleted successfully.');
+        return redirect()->route('articles.index')->with('success', 'Article deleted successfully.');
     }
 }
