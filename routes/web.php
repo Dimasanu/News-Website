@@ -69,9 +69,8 @@ Route::get('/articledb', function () {
 
 Route::resource('articledb', ArticleController::class)->only(['index', 'store', 'update', 'destroy']);
 
-Route::get('/categorydb', function () {
-    return view('admin/categorydb', ['title' => 'Admin Category']);
-});
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::resource('categories', CategoryController::class);
 
 
 //login route

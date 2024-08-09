@@ -41,11 +41,19 @@
                             <td>{{ $article->penulis }}</td>
                             <td>{{ $article->isi }}</td>
                             <td>{{ $article->category->name }}</td>
-                            <td>{{ $article->gambar }}</td>
+                            <td><img src="{{ $article->gambar }}" alt="{{ $article->judul }}" width="50"></td>
                             <td>{{ $article->created_at }}</td>
                             <td>
                                 <div class="d-flex justify-content-center">
-                                    <button class="btn btn-dark btn-sm me-2 editButton" data-id="{{ $article->id }}" data-title="{{ $article->judul }}" data-writer="{{ $article->penulis }}" data-fill="{{ $article->isi }}" data-category_id="{{ $article->category_id }}" data-image="{{ $article->gambar }}" data-bs-toggle="modal" data-bs-target="#Modal">
+                                    <button class="btn btn-dark btn-sm me-2 editButton" 
+                                        data-id="{{ $article->id }}" 
+                                        data-title="{{ $article->judul }}" 
+                                        data-writer="{{ $article->penulis }}" 
+                                        data-fill="{{ $article->isi }}" 
+                                        data-category_id="{{ $article->category_id }}" 
+                                        data-image="{{ $article->gambar }}" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#Modal">
                                         Edit
                                     </button>
                                     <form action="{{ route('articledb.destroy', $article->id) }}" method="POST" style="display:inline;">
@@ -153,4 +161,3 @@
     });
 </script>
 @endsection
-

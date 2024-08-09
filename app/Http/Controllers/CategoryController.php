@@ -7,47 +7,44 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $categorydb = Category::all();
-        return view('admin.categorydb', compact('categorydb'));
+        $categories = Category::all();
+        $editCategory = null;
+
+        if ($request->has('edit')) {
+            $editCategory = Category::findOrFail($request->edit);
+        }
+
+        return view('admin.categorydb', compact('categories', 'editCategory'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|string|max:255',
         ]);
 
-        Category::create([
-            'name' => $request -> name,
-        ]);
+        Category::create($request->all());
 
-        return redirect()->route('categorydb.index')
-                         ->with('success', 'Category saved successfully.');
+        return redirect()->route('categories.index')->with('success', 'Category added successfully.');
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|string|max:255',
         ]);
 
-        $category = Category::findOrFail($id);
-        $category->update([
-            'name' => $request -> name,
-        ]);
+        $category->update($request->all());
 
-        return redirect()->route('categorydb.index')
-                         ->with('success', 'Category updated successfully.');
+        return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
     }
 
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        $category = Category::findOrFail($id);
-            $category->delete();
+        $category->delete();
 
-        return redirect()->route('categorydb.index')
-                         ->with('success', 'Category deleted successfully.');
+        return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
     }
 }
