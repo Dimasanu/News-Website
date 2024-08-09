@@ -56,10 +56,9 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard', ['title' => 'Admin Dashboard']);
 })->name('dashboard')->middleware('auth');
 
-Route::get('/user', function () {
-    return view('admin/user', ['title' => 'Admin User']);
-});
-Route::resource('user', UserController::class)->middleware('auth');
+Route::resource('user', UserController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('auth');
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::resource('users', UserController::class);
 
 Route::resource('articledb', ArticleController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('auth');
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
