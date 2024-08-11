@@ -5,18 +5,21 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
     // Function to display the home page with articles and categories
     public function indexs()
     {
+        $sliderPosts = Article::orderBy('created_at', 'desc')->take(4)->get();  // Get 4 latest articles for the slider
         $posts = Article::take(5)->get();  // Get 5 articles for the main post section
         $latest = Article::orderBy('created_at', 'desc')->take(5)->get();  // Get 5 latest articles
         $categories = Category::with('articles')->take(5)->get();  // Get all categories with related articles
 
         return view('index', [
             'title' => 'Home',
+            'sliderPosts' => $sliderPosts,  // Pass the slider articles to the view
             'posts' => $posts,
             'latest' => $latest,
             'categories' => $categories,
